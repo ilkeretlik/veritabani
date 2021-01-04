@@ -14,13 +14,35 @@ class _UrunListesiState extends State<UrunListesi> {
 
   @override
   Widget build(BuildContext context) {
+    if (urunler == null) {
+      urunler = new List<Product>();
+      getData();
+    }
+
     return Scaffold(
-      body: UrunItems(),
+      body: urunItems(),
     );
   }
 
-  UrunItems() {
-    return ListView.builder(itemBuilder: null);
+  ListView urunItems() {
+    return ListView.builder(
+      itemCount: count,
+      itemBuilder: (BuildContext context, int position) {
+        return Card(
+          color: Colors.amberAccent,
+          elevation: 2.0,
+          child: ListTile(
+            leading: CircleAvatar(
+              backgroundColor: Colors.green,
+              child: Text("a"),
+            ),
+            title: Text(this.urunler[position].name),
+            subtitle: Text(this.urunler[position].description),
+            onTap: () {},
+          ),
+        );
+      },
+    );
   }
 
   void getData() {
@@ -33,8 +55,13 @@ class _UrunListesiState extends State<UrunListesi> {
         List<Product> productData = new List<Product>();
         count = result.length;
         for (int i = 0; i < count; i++) {
-          productData.add(Product);
+          productData.add(Product.fromObject(result[i]));
         }
+
+        setState(() {
+          urunler = productData;
+          count = count;
+        });
       });
     });
   }

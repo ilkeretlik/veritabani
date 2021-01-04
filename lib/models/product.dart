@@ -1,13 +1,13 @@
-
-
 class Product {
   int _id;
   String _name;
   String _description;
   double _price;
 
-  Product(this._name, this._description, this._price); //kayit ekleme constructer
-  Product.withId(this._id, this._name, this._description, this._price); //guncellme ekleme constructer..sonuna withId eklenir
+  Product(
+      this._name, this._description, this._price); //kayit ekleme constructer
+  Product.withId(this._id, this._name, this._description,
+      this._price); //guncellme ekleme constructer..sonuna withId eklenir
 
   int get id => _id; // veritabından id degerine _id yazılacak.
   String get name => _name;
@@ -48,5 +48,12 @@ class Product {
     }
 
     return map;
+  }
+
+  Product.fromObject(dynamic o) {
+    this._id = o["id"];
+    this._name = o["name"];
+    this._description = o["description"];
+    this._price =double.tryParse(o["price"].toString()) ;
   }
 }
