@@ -1,6 +1,8 @@
+
 import 'package:flutter/material.dart';
 import 'package:veritabani/db/dbHelper.dart';
 import 'package:veritabani/models/product.dart';
+import 'package:veritabani/screens/productDetail.dart';
 
 class UrunListesi extends StatefulWidget {
   @override
@@ -38,7 +40,9 @@ class _UrunListesiState extends State<UrunListesi> {
             ),
             title: Text(this.urunler[position].name),
             subtitle: Text(this.urunler[position].description),
-            onTap: () {},
+            onTap: () {
+              GoToDetail(this.urunler[position]);
+            },
           ),
         );
       },
@@ -65,4 +69,10 @@ class _UrunListesiState extends State<UrunListesi> {
       });
     });
   }
+
+  void GoToDetail(Product product) async {
+    await Navigator.push(
+        this.context, MaterialPageRoute(builder: (context) => ProductDetail()));
+  }
+
 }
