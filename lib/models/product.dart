@@ -9,7 +9,7 @@ class Product {
   Product(this._name, this._description, this._price); //kayit ekleme constructer
   Product.withId(this._id, this._name, this._description, this._price); //guncellme ekleme constructer..sonuna withId eklenir
 
-  int get id => _id; // veritabından id degerine _id yazılacak
+  int get id => _id; // veritabından id degerine _id yazılacak.
   String get name => _name;
   String get description => _description;
   double get price => _price;
