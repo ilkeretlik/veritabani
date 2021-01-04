@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:veritabani/db/dbHelper.dart';
 import 'package:veritabani/models/product.dart';
 
-
-
 class UrunListesi extends StatefulWidget {
   @override
   _UrunListesiState createState() => _UrunListesiState();
@@ -35,9 +33,7 @@ class _UrunListesiState extends State<UrunListesi> {
         List<Product> productData = new List<Product>();
         count = result.length;
         for (int i = 0; i < count; i++) {
-
           productData.add(Product);
-
         }
       });
     });
